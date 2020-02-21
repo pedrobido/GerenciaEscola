@@ -273,7 +273,7 @@ public class AlunoView {
 		painelDaJanela.add(painelDocumentos);
 		painelDaJanela.add(painelSenha);
 
-		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		janela.getContentPane().setLayout(null);
 		janela.setSize(460, 580);
 		janela.setLocationRelativeTo(null);
@@ -327,7 +327,7 @@ public class AlunoView {
 		public void actionPerformed(ActionEvent e) {
 			int opcao = JOptionPane.showConfirmDialog(null, "Deseja mesmo sair?", "Atenção", 0, 2);
 			if (opcao == 0) {
-				System.exit(0);
+				janela.dispose();
 			}
 		}
 	}

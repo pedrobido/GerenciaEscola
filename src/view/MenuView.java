@@ -66,9 +66,10 @@ public class MenuView {// INICIO DA CLASSE EXEMPLOMENU
 			}
 		});
 
-		itemMenu02.addActionListener(new ActionListener() {// Configurando a ação do item de menu 02
+		itemMenu05.addActionListener(new ActionListener() {// Configurando a ação do item de menu 02
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				new RelatorioAlunoView();
 			}
 		});
 
@@ -78,7 +79,7 @@ public class MenuView {// INICIO DA CLASSE EXEMPLOMENU
 		// CONFIGURAÇÕES DA TELA
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setJMenuBar(barraMenu);
-		janela.setSize(700, 700);
+		janela.setSize(1000, 700);
 		janela.setLocationRelativeTo(null);
 		janela.setVisible(true);
 

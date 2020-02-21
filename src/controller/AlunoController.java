@@ -154,22 +154,41 @@ public class AlunoController {
 		return true;
 	}
 
-	public void listarTodos() {
+	public Aluno[] listarTodos() {
 		try {
 			InputStream is = new FileInputStream("aluno.txt");
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader leitor = new BufferedReader(isr);
 			String texto = leitor.readLine();
+			int i = 0;
+
+			Aluno vetorAluno[] = new Aluno[100];
 
 			while (texto != null) {
 				String dados[] = texto.split(";");
-				System.out.println("Matrícula do aluno: " + dados[0]);
-				System.out.println("Nome do aluno: " + dados[1]);
-				System.out.println("Data de nascimento do aluno: " + dados[2]);
-				System.out.println("Sexo: " + dados[3]);
-				System.out.println("\n");
+
+				String datas[] = dados[2].split("/");
+				int dia = Integer.parseInt(datas[0]);
+				int mes = Integer.parseInt(datas[1]);
+				int ano = Integer.parseInt(datas[2]);
+
+				Data txtData = new Data(dia, mes, ano);
+
+				Cidade txtCidade = new Cidade(dados[11].toUpperCase());
+				Estado txtEstado = new Estado(dados[12].toUpperCase(), null);
+
+				Endereco txtEndereco = new Endereco(dados[6].toUpperCase(), Integer.parseInt(dados[7]),
+						dados[8].toUpperCase(), dados[9].toUpperCase(), txtCidade, txtEstado, dados[12]);
+
+				Aluno aluno = new Aluno(dados[0], dados[1], txtData, dados[4].charAt(0), dados[5], dados[6],
+						txtEndereco, dados[13], dados[14]);
 				texto = leitor.readLine();
+
+				vetorAluno[i] = aluno;
+				i++;
+
 			}
+			return vetorAluno;
 		} catch (FileNotFoundException e) {
 			System.out.println("Erro!\nArquivo de entrada não encontrado.");
 			e.printStackTrace();
@@ -177,6 +196,8 @@ public class AlunoController {
 			System.out.println("Erro!");
 			e.printStackTrace();
 		}
+		return null;
+
 	}
 
 	public void listarAniversariantes(int mes) {

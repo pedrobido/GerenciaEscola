@@ -8,6 +8,7 @@
 package model;
 
 public class Funcionario {
+	private int id;
 	private String nome;
 	private String cpf;
 	private double salario;
@@ -16,10 +17,20 @@ public class Funcionario {
 		System.out.println("Funcionário Criado");
 	}
 
-	public Funcionario(String nome, String cpf, double salario) {
+	public Funcionario(int id, String nome, String cpf, double salario) {
+		super();
+		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.salario = salario;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNome() {
