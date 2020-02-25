@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -24,9 +25,8 @@ import model.Data;
 import model.Endereco;
 import model.Estado;
 
-// Classe responsavel por todo o processo de aluno
-public class AlunoController {
-
+public class AlunoController {// Classe que controla todos os processamentos relacionados a aluno
+	// Método que valida os campos do cadastro de alunos
 	public boolean validarAluno(String matricula, String nome, String dataNascimento, String sexo, String rg,
 			String cpf, String logradouro, String numero, String complemento, String bairro, String cidade,
 			String estado, String cep, String telefone, String senha) {
@@ -34,6 +34,7 @@ public class AlunoController {
 		try {
 			StringBuilder strRegistro = new StringBuilder();
 
+			// Contador de caracteres para saber se o campo está nulo
 			int contMatricula = matricula.length();
 			int contNome = nome.length();
 			int contData = dataNascimento.length();
@@ -108,6 +109,7 @@ public class AlunoController {
 		return false;
 	}
 
+	// Grava todas as informações de aluno num arquivo caso os campos sejam válidos
 	public boolean inserirAluno(Aluno aluno) {
 		try {
 			File arquivoAluno = new File("aluno.txt");
@@ -154,15 +156,15 @@ public class AlunoController {
 		return true;
 	}
 
-	public Aluno[] listarTodos() {
+	// Exibe todos os alunos cadastrados
+	public ArrayList<Aluno> listarTodos() {
 		try {
 			InputStream is = new FileInputStream("aluno.txt");
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader leitor = new BufferedReader(isr);
 			String texto = leitor.readLine();
 			int i = 0;
-
-			Aluno vetorAluno[] = new Aluno[100];
+			ArrayList<Aluno> alunos = new ArrayList<Aluno>();
 
 			while (texto != null) {
 				String dados[] = texto.split(";");
@@ -184,11 +186,10 @@ public class AlunoController {
 						txtEndereco, dados[13], dados[14]);
 				texto = leitor.readLine();
 
-				vetorAluno[i] = aluno;
-				i++;
+				alunos.add(aluno);
 
 			}
-			return vetorAluno;
+			return alunos;
 		} catch (FileNotFoundException e) {
 			System.out.println("Erro!\nArquivo de entrada não encontrado.");
 			e.printStackTrace();
@@ -229,4 +230,5 @@ public class AlunoController {
 			e.printStackTrace();
 		}
 	}
+
 }

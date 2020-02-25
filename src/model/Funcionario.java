@@ -11,17 +11,22 @@ public class Funcionario {
 	private int id;
 	private String nome;
 	private String cpf;
+	private String rg;
+	private Data dataNascimento;
+	private String telefone;
+	private Endereco endereco;
 	private double salario;
 
-	public Funcionario() {
-		System.out.println("Funcionário Criado");
-	}
-
-	public Funcionario(int id, String nome, String cpf, double salario) {
+	public Funcionario(int id, String nome, String cpf, String rg, Data dataNascimento, String telefone,
+			Endereco endereco, double salario) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
+		this.rg = rg;
+		this.dataNascimento = dataNascimento;
+		this.telefone = telefone;
+		this.endereco = endereco;
 		this.salario = salario;
 	}
 
@@ -49,6 +54,38 @@ public class Funcionario {
 		this.cpf = cpf;
 	}
 
+	public String getRg() {
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+	public Data getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Data dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	public double getSalario() {
 		return salario;
 	}
@@ -57,9 +94,8 @@ public class Funcionario {
 		this.salario = salario;
 	}
 
-	public void exibe() {
-		System.out.println("Nome do funcionário: " + nome);
-		System.out.println("CPF do funcionário: " + cpf);
-		System.out.println("Salário do funcionário: " + salario);
+	public Funcionario() {
+
 	}
+
 }

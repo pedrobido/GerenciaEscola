@@ -6,7 +6,6 @@
 package view;
 
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,9 +23,13 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import controller.AlunoController;
+import controller.CidadeController;
+import controller.EstadoController;
 
 public class AlunoView {
 	AlunoController alunoController = new AlunoController();
+	CidadeController cidadeController = new CidadeController();
+	EstadoController estadoController = new EstadoController();
 
 	private JFrame janela;
 	private JLabel lblMatricula;
@@ -59,10 +62,9 @@ public class AlunoView {
 	private JRadioButton rbtSexoM;
 	private JRadioButton rbtSexoF;
 	private JComboBox cbCidade;
-	private String[] cidade = { "", "OSASCO", "BARUERI", "CARAPICUÍBA" };
+	private String[] cidades = cidadeController.leCidade();
 	private JComboBox cbEstado;
-	private String[] estado = { "", "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA",
-			"PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" };
+	private String[] estado = estadoController.leEstado();
 	private ButtonGroup grpSexo;
 	private JButton bSalvar;
 	private JButton bCancelar;
@@ -197,12 +199,12 @@ public class AlunoView {
 		grpSexo.add(rbtSexoM);
 		grpSexo.add(rbtSexoF);
 
-		cbCidade = new JComboBox(cidade);
-		cbCidade.setSelectedIndex(0);
+		cbCidade = new JComboBox(cidades);
+		cbCidade.setSelectedIndex(-1);
 		cbCidade.setBounds(130, 100, 150, 20);
 
 		cbEstado = new JComboBox(estado);
-		cbEstado.setSelectedIndex(0);
+		cbEstado.setSelectedIndex(-1);
 		cbEstado.setBounds(300, 100, 69, 20);
 
 		bSalvar = new JButton("Salvar");

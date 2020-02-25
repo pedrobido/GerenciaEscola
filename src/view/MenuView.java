@@ -66,10 +66,41 @@ public class MenuView {// INICIO DA CLASSE EXEMPLOMENU
 			}
 		});
 
-		itemMenu05.addActionListener(new ActionListener() {// Configurando a ação do item de menu 02
+		itemMenu02.addActionListener(new ActionListener() {// Configurando a ação do item de menu 02
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FuncionarioView();
+				// TODO Função DISPOSE
+			}
+		});
+
+		itemMenu03.addActionListener(new ActionListener() {// Configurando a ação do item de menu 03
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new CidadeView();
+				// TODO Função DISPOSE
+			}
+		});
+
+		itemMenu04.addActionListener(new ActionListener() {// Configurando a ação do item de menu 04
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new EstadoView();
+				// TODO Função DISPOSE
+			}
+		});
+
+		itemMenu05.addActionListener(new ActionListener() {// Configurando a ação do item de menu 05
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new RelatorioAlunoView();
+			}
+		});
+		
+		itemMenu06.addActionListener(new ActionListener() {// Configurando a ação do item de menu 06
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new RelatorioFuncionarioView();
 			}
 		});
 

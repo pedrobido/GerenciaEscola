@@ -1,6 +1,6 @@
 
 /**
- * Classe main para o método main
+ * Classe main do projeto Gerencia Escola
  * @author pbido
  * @since 17/02/2020
  * @version 0.1
@@ -14,14 +14,8 @@ import view.MenuView;
 public class Main {// Inicio do método main
 
 	public static void main(String[] args) {
-//		ProfessorController professorController = new ProfessorController();
-//		professorController.testeProfessor();
-		AlunoController alunoController = new AlunoController();
-//		alunoController.inserirAluno();
-		
-//		alunoController.listarAniversariantes(02);
 		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");//Muda o layout de todos os elementos do java swing
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

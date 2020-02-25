@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,7 +17,7 @@ import model.Aluno;
 
 public class RelatorioAlunoView {
 	AlunoController ac = new AlunoController();
-
+//Declaração das variáveis da janela
 	private JFrame janela;
 	private JTable tabela;
 	private JButton btnCancelar;
@@ -24,15 +25,15 @@ public class RelatorioAlunoView {
 	private JScrollPane painelDeScroll;
 	private String[] colunas = new String[] { "Matrícula", "Nome", "Data de Nascimento" };
 	private String[][] dados;
-//	private Aluno vetorAluno[] = null;
+	private ArrayList<Aluno> alunos;
 
-	public void iniciaGui(Aluno vetorAluno[]) {
-		for (int i = 0; i < vetorAluno.length; i++) {
-			while (vetorAluno[i] != null) {
-				dados = new String[][] { { vetorAluno[i].getMatricula(), vetorAluno[i].getNome(),
-						vetorAluno[i].getDataNascimento().getDia() + "/" + vetorAluno[i].getDataNascimento().getMes()
-								+ "/" + vetorAluno[i].getDataNascimento().getAno() } };
-			}
+	public void iniciaGui() {
+		alunos = ac.listarTodos();// Recebe o retorno do método listar todos do alunoController
+		DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
+		for (Aluno aluno : alunos) {
+
+			modelo.addRow(new Object[] { aluno.getMatricula(), aluno.getNome(), aluno.getDataNascimento().getDia() + "/"
+					+ aluno.getDataNascimento().getMes() + "/" + aluno.getDataNascimento().getAno() });
 		}
 
 		janela = new JFrame("Relatório de alunos");
@@ -40,7 +41,6 @@ public class RelatorioAlunoView {
 		btnCancelar = new JButton();
 		painelDaJanela = (JPanel) janela.getContentPane();
 
-		DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
 		tabela = new JTable(modelo);
 		tabela.setEnabled(true);
 
@@ -52,7 +52,7 @@ public class RelatorioAlunoView {
 		painelDaJanela.add(painelDeScroll);
 
 		btnCancelar.setText("Cancelar");
-		btnCancelar.setBounds(370, 520, 100, 30);
+		btnCancelar.setBounds(375, 520, 100, 30);
 		btnCancelar.addActionListener(new ActionListener() {
 
 			@Override
@@ -76,8 +76,7 @@ public class RelatorioAlunoView {
 	}
 
 	public RelatorioAlunoView() {
-
-		iniciaGui(ac.listarTodos());
+		iniciaGui();
 	}
 
 }

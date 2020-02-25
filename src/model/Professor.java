@@ -26,8 +26,5 @@ public class Professor extends Funcionario {
 		this.materia = materia;
 	}
 
-	public void exibe() {
-		super.exibe();
-		System.out.println("Matéria do professor: " + materia);
-	}
+
 }
