@@ -148,7 +148,7 @@ public class AlunoController {// Classe que controla todos os processamentos rel
 
 			arquivoAlunoOutput.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("Arquivo de saída não encontrado.");
+
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -191,7 +191,7 @@ public class AlunoController {// Classe que controla todos os processamentos rel
 			}
 			return alunos;
 		} catch (FileNotFoundException e) {
-			System.out.println("Erro!\nArquivo de entrada não encontrado.");
+
 			e.printStackTrace();
 		} catch (IOException e) {
 			System.out.println("Erro!");
@@ -223,7 +223,6 @@ public class AlunoController {// Classe que controla todos os processamentos rel
 				texto = leitor.readLine();
 			}
 		} catch (FileNotFoundException e) {
-			System.out.println("Erro!\nArquivo de entrada não encontrado.");
 			e.printStackTrace();
 		} catch (IOException e) {
 			System.out.println("Erro!");

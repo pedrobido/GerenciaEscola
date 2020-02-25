@@ -76,7 +76,12 @@ public class RelatorioAlunoView {
 	}
 
 	public RelatorioAlunoView() {
-		iniciaGui();
+		if (ac.listarTodos() != null) {
+			iniciaGui();
+		} else {
+			JOptionPane.showMessageDialog(null, "Nenhum aluno cadastrado");
+		}
+
 	}
 
 }

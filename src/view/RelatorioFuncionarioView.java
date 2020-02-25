@@ -37,47 +37,49 @@ public class RelatorioFuncionarioView {
 
 	public void iniciaGui() {
 		professores = fc.listarProfessores();
-		DefaultTableModel modeloProf = new DefaultTableModel(dados, colunas);
-		for (Funcionario funcionario : professores) {
+		if (professores != null) {
+			DefaultTableModel modeloProf = new DefaultTableModel(dados, colunas);
+			for (Funcionario funcionario : professores) {
 
-			modeloProf.addRow(new Object[] {
-					funcionario.getNome(), funcionario.getDataNascimento().getDia() + "/"
-							+ funcionario.getDataNascimento().getMes() + "/" + funcionario.getDataNascimento().getAno(),
-					funcionario.getTelefone() });
+				modeloProf.addRow(new Object[] { funcionario.getNome(), funcionario.getDataNascimento().getDia() + "/"
+						+ funcionario.getDataNascimento().getMes() + "/" + funcionario.getDataNascimento().getAno(),
+						funcionario.getTelefone() });
+			}
+			tabelaProf = new JTable(modeloProf);
+			tabelaProf.setEnabled(true);
 		}
-
 		faxineiras = fc.listarFaxineiras();
-		DefaultTableModel modeloFaxi = new DefaultTableModel(dados, colunas);
-		for (Funcionario funcionario : faxineiras) {
+		if (faxineiras != null) {
 
-			modeloFaxi.addRow(new Object[] {
-					funcionario.getNome(), funcionario.getDataNascimento().getDia() + "/"
-							+ funcionario.getDataNascimento().getMes() + "/" + funcionario.getDataNascimento().getAno(),
-					funcionario.getTelefone() });
+			DefaultTableModel modeloFaxi = new DefaultTableModel(dados, colunas);
+			for (Funcionario funcionario : faxineiras) {
+
+				modeloFaxi.addRow(new Object[] { funcionario.getNome(), funcionario.getDataNascimento().getDia() + "/"
+						+ funcionario.getDataNascimento().getMes() + "/" + funcionario.getDataNascimento().getAno(),
+						funcionario.getTelefone() });
+			}
+			tabelaFaxi = new JTable(modeloFaxi);
+			tabelaFaxi.setEnabled(true);
 		}
 
 		secretarias = fc.listarSecretarias();
-		DefaultTableModel modeloSecr = new DefaultTableModel(dados, colunas);
-		for (Funcionario funcionario : secretarias) {
+		if (secretarias != null) {
 
-			modeloSecr.addRow(new Object[] {
-					funcionario.getNome(), funcionario.getDataNascimento().getDia() + "/"
-							+ funcionario.getDataNascimento().getMes() + "/" + funcionario.getDataNascimento().getAno(),
-					funcionario.getTelefone() });
+			DefaultTableModel modeloSecr = new DefaultTableModel(dados, colunas);
+			for (Funcionario funcionario : secretarias) {
+
+				modeloSecr.addRow(new Object[] { funcionario.getNome(), funcionario.getDataNascimento().getDia() + "/"
+						+ funcionario.getDataNascimento().getMes() + "/" + funcionario.getDataNascimento().getAno(),
+						funcionario.getTelefone() });
+			}
+
+			tabelaSecr = new JTable(modeloSecr);
+			tabelaSecr.setEnabled(true);
 		}
 
 		janela = new JFrame("Relatório de Funcionários");
 		btnCancelar = new JButton();
 		painelDaJanela = (JPanel) janela.getContentPane();
-
-		tabelaProf = new JTable(modeloProf);
-		tabelaProf.setEnabled(true);
-
-		tabelaFaxi = new JTable(modeloFaxi);
-		tabelaFaxi.setEnabled(true);
-
-		tabelaSecr = new JTable(modeloSecr);
-		tabelaSecr.setEnabled(true);
 
 		painelDeScrollProf = new JScrollPane(tabelaProf);
 		painelDeScrollProf.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -125,7 +127,12 @@ public class RelatorioFuncionarioView {
 	}
 
 	public RelatorioFuncionarioView() {
-		iniciaGui();
+		if ((fc.listarProfessores() != null) || (fc.listarFaxineiras() != null) || (fc.listarSecretarias() != null)) {
+			iniciaGui();
+		}else {
+			JOptionPane.showMessageDialog(null, "Nenhum funcionário cadastrado");
+		}
+
 	}
 
 }

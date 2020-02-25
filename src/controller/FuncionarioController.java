@@ -64,7 +64,6 @@ public class FuncionarioController {
 					}
 					salario = salario.replace(",", "");
 					salario = salario.replace(". ", "");
-					System.out.println(salario);
 					Data txtData = new Data(dia, mes, ano);
 					Cidade txtCidade = new Cidade(cidade.toUpperCase());
 					Estado txtEstado = new Estado(estado.toUpperCase(), null);
@@ -133,7 +132,7 @@ public class FuncionarioController {
 
 			arquivoOutput.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("Arquivo de saída não encontrado.");
+
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -176,8 +175,8 @@ public class FuncionarioController {
 			}
 			return funcionarios;
 		} catch (FileNotFoundException e) {
-			System.out.println("Erro!\nArquivo de entrada não encontrado.");
-			e.printStackTrace();
+
+			return null;
 		} catch (IOException e) {
 			System.out.println("Erro!");
 			e.printStackTrace();
@@ -220,9 +219,6 @@ public class FuncionarioController {
 				texto = leitor.readLine();
 			}
 			return funcionarios;
-		} catch (FileNotFoundException e) {
-			System.out.println("Erro!\nArquivo de entrada não encontrado.");
-			e.printStackTrace();
 		} catch (IOException e) {
 			System.out.println("Erro!");
 			e.printStackTrace();
@@ -265,9 +261,6 @@ public class FuncionarioController {
 				texto = leitor.readLine();
 			}
 			return funcionarios;
-		} catch (FileNotFoundException e) {
-			System.out.println("Erro!\nArquivo de entrada não encontrado.");
-			e.printStackTrace();
 		} catch (IOException e) {
 			System.out.println("Erro!");
 			e.printStackTrace();
