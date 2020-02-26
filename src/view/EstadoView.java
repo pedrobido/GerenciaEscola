@@ -49,6 +49,11 @@ public class EstadoView {
 		lblUf.setText("UF:");
 		lblUf.setBounds(20, 60, 200, 20);
 
+		try {
+			javax.swing.text.MaskFormatter uf = new javax.swing.text.MaskFormatter("UU");
+			tfdUf = new javax.swing.JFormattedTextField(uf);
+		} catch (Exception e) {
+		}
 		tfdUf.setBounds(20, 80, 40, 20);
 		tfdUf.addActionListener(new SalvarListener());
 

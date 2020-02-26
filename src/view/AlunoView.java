@@ -289,37 +289,43 @@ public class AlunoView {
 	public class SalvarListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int opcao = JOptionPane.showConfirmDialog(null, "Confirmar cadastro?", "Atenção", 0);
-			if (opcao == 0) {
-				String sexo;
-				if (rbtSexoM.isSelected()) {
-					sexo = "M";
-				} else {
-					sexo = "F";
+			try {
+				int opcao = JOptionPane.showConfirmDialog(null, "Confirmar cadastro?", "Atenção", 0);
+				if (opcao == 0) {
+					String sexo;
+					if (rbtSexoM.isSelected()) {
+						sexo = "M";
+					} else {
+						sexo = "F";
+					}
+					AlunoController alunocontroller = new AlunoController();
+					if (alunocontroller.validarAluno(txtMatricula.getText(), txtNome.getText(),
+							txtDataNascimento.getText(), sexo, txtRg.getText(), txtCpf.getText(),
+							txtLogradouro.getText(), txtNumero.getText(), txtComplemento.getText(), txtBairro.getText(),
+							cbCidade.getSelectedItem().toString(), cbEstado.getSelectedItem().toString(),
+							txtCep.getText(), txtTelefone.getText(), jpwSenha.getText())) {
+						txtMatricula.setText("");
+						txtNome.setText("");
+						txtDataNascimento.setText("");
+						rbtSexoM.isSelected();
+						rbtSexoF.isSelected();
+						txtRg.setText("");
+						txtCpf.setText("");
+						txtLogradouro.setText("");
+						txtNumero.setText("");
+						txtComplemento.setText("");
+						txtBairro.setText("");
+						cbCidade.setSelectedIndex(-1);
+						cbEstado.setSelectedIndex(-1);
+						txtCep.setText("");
+						txtTelefone.setText("");
+						jpwSenha.setText("");
+
+					}
 				}
-				AlunoController alunocontroller = new AlunoController();
-				if (alunocontroller.validarAluno(txtMatricula.getText(), txtNome.getText(), txtDataNascimento.getText(),
-						sexo, txtRg.getText(), txtCpf.getText(), txtLogradouro.getText(), txtNumero.getText(),
-						txtComplemento.getText(), txtBairro.getText(), cbCidade.getSelectedItem().toString(),
-						cbEstado.getSelectedItem().toString(), txtCep.getText(), txtTelefone.getText(),
-						jpwSenha.getText())) {
-					txtMatricula.setText("");
-					txtNome.setText("");
-					txtDataNascimento.setText("");
-					rbtSexoM.isSelected();
-					rbtSexoF.isSelected();
-					txtRg.setText("");
-					txtCpf.setText("");
-					txtLogradouro.setText("");
-					txtNumero.setText("");
-					txtComplemento.setText("");
-					txtBairro.setText("");
-					cbCidade.setSelectedIndex(-1);
-					cbEstado.setSelectedIndex(-1);
-					txtCep.setText("");
-					txtTelefone.setText("");
-					jpwSenha.setText("");
-				}
+			} catch (NullPointerException g) {
+				JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Erro!",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	}

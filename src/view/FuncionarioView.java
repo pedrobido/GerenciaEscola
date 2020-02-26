@@ -8,6 +8,7 @@ package view;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -23,6 +24,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
 
 import controller.CidadeController;
 import controller.EstadoController;
@@ -176,6 +179,11 @@ public class FuncionarioView {
 		txtTelefone.setBounds(10, 100, 100, 20);
 
 		txtSalario = new JTextField();
+		try {
+			MaskFormatter salario = new javax.swing.text.MaskFormatter("####");
+			txtSalario = new javax.swing.JFormattedTextField(salario);
+		} catch (Exception e) {
+		}
 		txtSalario.setBounds(125, 100, 100, 20);
 
 		txtRg = new JTextField();
